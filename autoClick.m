@@ -1,13 +1,13 @@
-function  autoClick(steps)
+function  autoClick(steps, GAP_TOP, GAP_LEFT, GRID_WIDTH, GRID_HEIGHT)
 % steps为向量，每4个一组，为x1,y1,x2,y2
 % 调用pressMouse模拟鼠标点击
 % pressMouse(x,y)，x、y为坐标
     
 % 定义常量
-    GAP_TOP = 71;
-    GAP_LEFT = 52;
-    GRID_WIDTH = 40;
-    GRID_HEIGHT = 50;
+%     GAP_TOP = 71;
+%     GAP_LEFT = 52;
+%     GRID_WIDTH = 40;
+%     GRID_HEIGHT = 50;
     SLEEP_IN = 0.3;
     SLEEP_OUT = 0.6;
 % 开始点击

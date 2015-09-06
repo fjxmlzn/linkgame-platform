@@ -153,11 +153,19 @@ function pushbutton_startPlugin_Callback(hObject, eventdata, handles)
         handles.pluginOutput = 1;
     end
 	guidata(hObject, handles);
-% 窗口自动移动至屏幕左上角
-    screenSize = get(0,'screensize');
-    h = get(gcf, 'Position');
-    h = [0, screenSize(4) - h(4), h(3:4)];
-    set(gcf, 'Position', h);
+% % 窗口自动移动至屏幕左上角
+     screenSize = get(0,'screensize');
+     p0 = get(gcf, 'Position');
+%     p0 = [0, screenSize(4) - p0(4), p0(3:4)];
+%     set(gcf, 'Position', p0);
+% 获得按键坐标参数
+    p1 = get(handles.gameBtn{1,1}, 'Position');
+    p2 = get(handles.gameBtn{1,2}, 'Position');
+    p3 = get(handles.gameBtn{2,1}, 'Position');
+    GRID_WIDTH = p2(1) - p1(1);
+    GRID_HEIGHT = p1(2) - p3(2);
+    GAP_TOP = screenSize(4) - p0(2) - p1(2) - GRID_HEIGHT / 2;
+    GAP_LEFT = p0(1) + p1(1) + GRID_WIDTH / 2;
 % 开始外挂
     h = msgbox({'外挂即将启动。' ; '运行过程中可以随时按键盘E停止【为了保证停止功能正常，请切换到英文输入模式】。'});
     set(h, 'WindowStyle', 'modal');
@@ -170,22 +178,22 @@ function pushbutton_startPlugin_Callback(hObject, eventdata, handles)
             end
             if (handles.pluginSource == 0)
                 steps = omg(handles.gameMap);
-                autoClick(steps(2 : end));
+                autoClick(steps(2 : end), GAP_TOP, GAP_LEFT, GRID_WIDTH, GRID_HEIGHT);
             else
                 realcapture = user_camera();
                 step = ai(realcapture);
-                autoClick(step);
+                autoClick(step, GAP_TOP, GAP_LEFT, GRID_WIDTH, GRID_HEIGHT);
             end
             handles = guidata(hObject);
         end
     else
          if (handles.pluginSource == 0)
             steps = omg(handles.gameMap);
-            autoClick(steps(2 : end));
+            autoClick(steps(2 : end), GAP_TOP, GAP_LEFT, GRID_WIDTH, GRID_HEIGHT);
         else
             realcapture = user_camera();
             step = ai(realcapture);
-            autoClick(step);
+            autoClick(step, GAP_TOP, GAP_LEFT, GRID_WIDTH, GRID_HEIGHT);
         end       
     end
 % 打开按钮
