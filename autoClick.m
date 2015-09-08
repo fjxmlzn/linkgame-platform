@@ -10,6 +10,7 @@ function  autoClick(steps, GAP_TOP, GAP_LEFT, GRID_WIDTH, GRID_HEIGHT)
 %     GRID_HEIGHT = 50;
     SLEEP_IN = 0.3;
     SLEEP_OUT = 0.6;
+    pause(1);
 % ¿ªÊ¼µã»÷
     for i = 1 : 4 : length(steps)
         if (strcmpi(get(gcf, 'CurrentCharacter'), 'e'))

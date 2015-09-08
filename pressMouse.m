@@ -4,5 +4,6 @@ function pressMouse(x, y)
     mouse = Robot;
     mouse.mouseMove(x, y);
     mouse.mousePress(InputEvent.BUTTON1_MASK);
+    pause(0.1);
     mouse.mouseRelease(InputEvent.BUTTON1_MASK);
 end
