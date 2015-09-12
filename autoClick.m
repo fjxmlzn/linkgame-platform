@@ -13,10 +13,7 @@ function  autoClick(steps, GAP_TOP, GAP_LEFT, GRID_WIDTH, GRID_HEIGHT)
     pause(1);
 % ¿ªÊ¼µã»÷
     for i = 1 : 4 : length(steps)
-        if (strcmpi(get(gcf, 'CurrentCharacter'), 'e'))
-            set(gcf, 'CurrentCharacter', 'f');
-            break; 
-        end
+        if (~checkActive()), break; end
         x1 = steps(i); y1 = steps(i + 1);
         x2 = steps(i + 2); y2 = steps(i + 3);
         click(x1, y1);

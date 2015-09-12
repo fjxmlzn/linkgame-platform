@@ -167,15 +167,12 @@ function pushbutton_startPlugin_Callback(hObject, eventdata, handles)
     GAP_TOP = screenSize(4) - p0(2) - p1(2) - GRID_HEIGHT / 2;
     GAP_LEFT = p0(1) + p1(1) + GRID_WIDTH / 2;
 % 开始外挂
-    h = msgbox({'外挂即将启动。' ; '运行过程中可以随时按键盘E停止【为了保证停止功能正常，请切换到英文输入模式】。'});
+    h = msgbox({'外挂即将启动。' ; '鼠标移出窗口外将自动停止外挂。'});
     set(h, 'WindowStyle', 'modal');
     uiwait;
     if (handles.pluginOutput == 1) % 多次调用
         while (~isempty(handles.aiCandidateList))
-            if (strcmpi(get(gcf, 'CurrentCharacter'), 'e'))
-                set(gcf, 'CurrentCharacter', 'f');
-                break; 
-            end
+            if (~checkActive()), break; end
             if (handles.pluginSource == 0)
                 steps = omg(handles.gameMap);
                 autoClick(steps(2 : end), GAP_TOP, GAP_LEFT, GRID_WIDTH, GRID_HEIGHT);

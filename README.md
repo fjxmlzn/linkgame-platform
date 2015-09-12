@@ -30,6 +30,7 @@ Matlab course project (linkgame)'s platform
 1. pics.mat-连连看精灵图片的cell数组。用户可以根据喜好更换。
 1. pressMouse.p-调用java实现的鼠标点击模块。
 1. user_camera.m-用户可以修改的摄像头数据采集模块。
+1. checkActive.m-调用java实现的判断鼠标是否在窗口内的模块。用于停止外挂。
 
 ## 用户操作和UI逻辑的简单说明 ##
 1. 区域大小：方块行数列数。
