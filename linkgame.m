@@ -22,7 +22,7 @@ function varargout = linkgame(varargin)
 
 % Edit the above text to modify the response to help linkgame
 
-% Last Modified by GUIDE v2.5 03-Sep-2015 01:58:17
+% Last Modified by GUIDE v2.5 13-Sep-2015 00:04:24
 
 % Begin initialization code - DO NOT EDIT
     gui_Singleton = 1;
@@ -147,7 +147,7 @@ function pushbutton_startPlugin_Callback(hObject, eventdata, handles)
         handles.pluginSource = 1;
     end
 % 获得用户设置外挂输出模式 
-    if (strcmp('radiobutton_pluginOutput_one', get(get(handles.uipanel_pluginOutput, 'SelectedObject'), 'Tag')))
+    if (strcmp('radiobutton_pluginCall_one', get(get(handles.uipanel_pluginCall, 'SelectedObject'), 'Tag')))
         handles.pluginOutput = 0;
     else
         handles.pluginOutput = 1;
@@ -170,7 +170,7 @@ function pushbutton_startPlugin_Callback(hObject, eventdata, handles)
     h = msgbox({'外挂即将启动。' ; '运行过程中可以随时按键盘E停止【为了保证停止功能正常，请切换到英文输入模式】。'});
     set(h, 'WindowStyle', 'modal');
     uiwait;
-    if (handles.pluginOutput == 0) % 单步外挂
+    if (handles.pluginOutput == 1) % 多次调用
         while (~isempty(handles.aiCandidateList))
             if (strcmpi(get(gcf, 'CurrentCharacter'), 'e'))
                 set(gcf, 'CurrentCharacter', 'f');
